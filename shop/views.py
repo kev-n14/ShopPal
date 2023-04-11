@@ -37,3 +37,10 @@ def edit_item_shop_list(request, item_id):
         'form': form
         }
     return render(request, 'shop/edit_item_shop_list.html', context)
+
+
+def toggle_item_shop_list(request, item_id):
+    item = get_object_or_404(Item, id=item_id)
+    item.complete = not item.complete
+    item.save()
+    return redirect('get_shop_list')
