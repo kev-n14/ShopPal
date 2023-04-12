@@ -9,7 +9,7 @@ def get_shop_list(request):
     context = {
         'items': items
     }
-    return render(request, 'shop/shop_list.html', context)
+    return render(request, 'shop/index.html', context)
 
 
 def add_item_shop_list(request):
@@ -43,4 +43,10 @@ def toggle_item_shop_list(request, item_id):
     item = get_object_or_404(Item, id=item_id)
     item.complete = not item.complete
     item.save()
+    return redirect('get_shop_list')
+
+
+def delete_item_shop_list(request, item_id):
+    item = get_object_or_404(Item, id=item_id)
+    item.delete()
     return redirect('get_shop_list')
