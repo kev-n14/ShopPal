@@ -50,3 +50,6 @@ def delete_item_shop_list(request, item_id):
     item = get_object_or_404(Item, id=item_id)
     item.delete()
     return redirect('get_shop_list')
+
+def login(request):
+    return render(request, 'shop/login.html')
